@@ -1,21 +1,23 @@
 # ResumoIA
 
 Carrossel diario de noticias de inteligencia artificial no Instagram (@resumoia), com aprovacao antes de publicar.
+Tudo roda no GitHub Actions; o Claude (escolha e resumo das noticias) usa a assinatura do Claude do dono, sem chave de API.
 
 ## Fluxo diario (horario de Brasilia)
-| Hora | Quem | O que faz |
+| Hora | Workflow | O que faz |
 |---|---|---|
-| 04:30 | GitHub Actions (`collect.yml`) | Le os feeds RSS e grava `data/candidates.json` |
-| 05:00 | Rotina em nuvem do Claude | Escolhe 4 noticias, escreve os resumos e grava `data/today.json` (prompt em `docs/prompt-rotina.md`) |
-| logo apos | GitHub Actions (`draft.yml`) | Gera as 5 imagens e a legenda e abre uma Issue "Rascunho AAAA-MM-DD" |
+| 05:00 | `daily.yml` | Le os feeds RSS, o **Claude** escolhe 4 noticias e escreve os resumos, o GitHub gera as 5 imagens e a legenda e abre uma Issue "Rascunho AAAA-MM-DD" |
 | quando voce quiser | **Voce** | Confere a Issue e adiciona o rotulo `aprovado` (pode ser pelo celular) |
-| em seguida | GitHub Actions (`publish.yml`) | Publica o carrossel no Instagram e fecha a Issue |
+| em seguida | `publish.yml` | Publica o carrossel no Instagram e fecha a Issue |
 
 Para descartar um rascunho: feche a Issue sem rotulo. Nada e publicado sem o rotulo.
+`draft.yml` regenera o rascunho se alguem editar `data/today.json` na mao e der push.
 
 ## Segredos do repositorio
-- `IG_ACCESS_TOKEN`: token de Pagina permanente (gerado com o `get_token.py` do projeto 365 Dias Estoicos).
+- `CLAUDE_CODE_OAUTH_TOKEN`: token da assinatura do Claude (gerado com `claude setup-token`, planos Pro/Max).
+- `IG_ACCESS_TOKEN`: token de Pagina permanente do Instagram.
 - `IG_USER_ID`: opcional (o robo descobre a conta pelo token).
+- O app **Claude** do GitHub precisa estar instalado neste repositorio (github.com/apps/claude).
 
 ## Comandos locais
 ```
