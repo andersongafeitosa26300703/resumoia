@@ -1,0 +1,26 @@
+{
+  "date": "2026-10-04",
+  "headline": "Trump cria força federal de IA e a OpenAI perde um funcionário de segurança",
+  "items": [
+    {
+      "title": "Trump anuncia a \"Força da Superinteligência\"",
+      "summary": "A nova força-tarefa é a resposta mais recente do governo Trump ao debate sobre segurança em IA. O diretor de inteligência nacional foi nomeado para liderar a iniciativa.",
+      "source": "TechCrunch / UOL"
+    },
+    {
+      "title": "Funcionário de segurança da OpenAI pede demissão",
+      "summary": "David Robinson, que escrevia os relatórios de segurança de cada grande modelo da empresa, saiu e afirma que a cultura da OpenAI \"está quebrada\".",
+      "source": "TechCrunch / The Verge"
+    },
+    {
+      "title": "Amazon diz que não usa mais NDAs em data centers",
+      "summary": "O CEO da AWS rebateu a desconfiança crescente da população com data centers. Segundo ele, a empresa deixou de usar acordos de confidencialidade nesses projetos.",
+      "source": "TechCrunch"
+    },
+    {
+      "title": "Capcom se prepara para um futuro de jogos feitos com IA",
+      "summary": "O estúdio afirma que quer criar jogos junto com inteligência artificial, mesmo com Pragmata tratando justamente dos horrores da IA.",
+      "source": "The Verge"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+name: 2 - Gerar rascunho e pedir aprovacao
+
+on:
+  push:
+    branches: [main]
+    paths: ["data/today.json"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: draft
+  cancel-in-progress: false
+
+jobs:
+  draft:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+
+      - name: Gerar imagens e legenda
+        run: python scripts/make_draft.py
+
+      - name: Enviar rascunho ao repositorio (as imagens precisam de URL publica)
+        run: |
+          git config user.name "resumoia-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add drafts/
+          git diff --cached --quiet || git commit -m "Rascunho do dia"
+          git push
+
+      - name: Abrir Issue de aprovacao
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          DATE=$(python -c "import json;print(json.load(open('data/today.json',encoding='utf-8'))['date'])")
+          TITLE="Rascunho $DATE"
+          gh label create aprovado --color 0E8A16 --description "Aprova a publicacao no Instagram" --force
+          if gh issue list --state all --search "\"$TITLE\" in:title" --json title --jq '.[].title' | grep -qx "$TITLE"; then
+            echo "Ja existe Issue para $DATE; nada a fazer."
+          else
+            gh issue create --title "$TITLE" --body-file "drafts/$DATE/issue.md"
+          fi
