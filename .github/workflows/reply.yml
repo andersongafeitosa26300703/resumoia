@@ -80,7 +80,7 @@ jobs:
           git config user.email "bot@users.noreply.github.com"
           git add data/posted.json
           git diff --cached --quiet || git commit -m "Registro da publicacao ${{ steps.r.outputs.date }}"
-          git pull -q --rebase origin main
+          git pull -q --rebase --autostash origin main
           git push
           gh issue comment "$ISSUE" --body "Publicado no Instagram."
           gh issue close "$ISSUE"
@@ -196,7 +196,7 @@ jobs:
           git config user.email "bot@users.noreply.github.com"
           git add "drafts/$DATE"
           git diff --cached --quiet || git commit -m "Nova versao do rascunho de $DATE"
-          git pull -q --rebase origin main
+          git pull -q --rebase --autostash origin main
           git push
           gh issue comment "$ISSUE" --body-file "drafts/$DATE/comment.md"
 
