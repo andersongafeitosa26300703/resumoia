@@ -46,7 +46,7 @@ jobs:
           echo "Token do Claude: ${#CLEAN} caracteres, comeca com sk-ant-: $([[ $CLEAN == sk-ant-* ]] && echo sim || echo nao)"
           echo "Primeiros 6 caracteres: ${CLEAN:0:6} | tem http: $([[ $CLEAN == *http* ]] && echo sim || echo nao) | tem ponto: $([[ $CLEAN == *.* ]] && echo sim || echo nao)"
           if [[ $CLEAN != sk-ant-* ]]; then
-            if [[ $CLEAN == EAA* ]]; then echo "ERRO: este segredo parece ser um token do INSTAGRAM (EAA...). O token do Claude vem de 'claude setup-token' e comeca com sk-ant-."
+            if [[ $CLEAN == EA[A-Z]* ]]; then echo "ERRO: este segredo parece ser um token do INSTAGRAM/Meta (comeca com EAA ou EAB). O token do Claude vem de 'claude setup-token' e comeca com sk-ant-."
             else echo "ERRO: o segredo CLAUDE_CODE_OAUTH_TOKEN nao e um token do Claude (deveria comecar com sk-ant-). Gere de novo com 'claude setup-token'."; fi
             exit 1
           fi
