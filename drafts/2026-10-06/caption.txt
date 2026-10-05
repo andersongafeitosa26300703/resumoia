@@ -1,9 +1,10 @@
-As principais notícias de inteligência artificial do dia, em resumo.
+Agentes autônomos, segurança, mercado de chips e saúde marcam as notícias de IA.
 
-1. CEO da OpenAI defende aceitar riscos para avançar com a IA (UOL / Estadão / Olhar Digital)
-2. Trump anuncia força-tarefa para coordenar ações do governo sobre IA (G1)
-3. Huawei e Qualcomm fecham acordo de patentes que inclui 5G, computação e IA (Valor Econômico / InfoMoney)
-4. Receita da Foxconn salta 47% no 3º trimestre e atinge recorde com IA (ADVFN)
+1. Pesquisadores rastreiam frota de agentes de IA ligada à infraestrutura da Tencent (TechCrunch)
+2. Google congela programa de recompensas por bugs de código aberto após onda de envios com IA (TechCrunch)
+3. CME prepara contratos futuros de computação de IA baseados em chips da Nvidia (ADVFN)
+4. Ferramenta de código aberto apaga 12 GB de dados do Apple Intelligence no macOS (The Verge)
+5. IA usa exames de rotina para prever risco de câncer de pâncreas (Defesa em Foco)
 
 Salve para ler depois e siga para receber o resumo todo dia.
 
