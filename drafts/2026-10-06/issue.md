@@ -2,11 +2,11 @@
 
 ## Rascunho do carrossel de 2026-10-06
 
-![slide 1](https://raw.githubusercontent.com/andersongafeitosa26300703/resumoia/main/drafts/2026-10-06/slide-01.jpg?v=1791210325)
-![slide 2](https://raw.githubusercontent.com/andersongafeitosa26300703/resumoia/main/drafts/2026-10-06/slide-02.jpg?v=1791210325)
-![slide 3](https://raw.githubusercontent.com/andersongafeitosa26300703/resumoia/main/drafts/2026-10-06/slide-03.jpg?v=1791210325)
-![slide 4](https://raw.githubusercontent.com/andersongafeitosa26300703/resumoia/main/drafts/2026-10-06/slide-04.jpg?v=1791210325)
-![slide 5](https://raw.githubusercontent.com/andersongafeitosa26300703/resumoia/main/drafts/2026-10-06/slide-05.jpg?v=1791210325)
+![slide 1](https://raw.githubusercontent.com/andersongafeitosa26300703/resumoia/main/drafts/2026-10-06/slide-01.jpg?v=1791211364)
+![slide 2](https://raw.githubusercontent.com/andersongafeitosa26300703/resumoia/main/drafts/2026-10-06/slide-02.jpg?v=1791211364)
+![slide 3](https://raw.githubusercontent.com/andersongafeitosa26300703/resumoia/main/drafts/2026-10-06/slide-03.jpg?v=1791211364)
+![slide 4](https://raw.githubusercontent.com/andersongafeitosa26300703/resumoia/main/drafts/2026-10-06/slide-04.jpg?v=1791211364)
+![slide 5](https://raw.githubusercontent.com/andersongafeitosa26300703/resumoia/main/drafts/2026-10-06/slide-05.jpg?v=1791211364)
 
 ### Legenda
 ```
