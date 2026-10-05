@@ -44,13 +44,17 @@ jobs:
           echo "::add-mask::$CLEAN"
           echo "token=$CLEAN" >> "$GITHUB_OUTPUT"
           echo "Token do Claude: ${#CLEAN} caracteres, comeca com sk-ant-: $([[ $CLEAN == sk-ant-* ]] && echo sim || echo nao)"
+          if [[ $CLEAN != sk-ant-* ]]; then
+            if [[ $CLEAN == EAA* ]]; then echo "ERRO: este segredo parece ser um token do INSTAGRAM (EAA...). O token do Claude vem de 'claude setup-token' e comeca com sk-ant-."
+            else echo "ERRO: o segredo CLAUDE_CODE_OAUTH_TOKEN nao e um token do Claude (deveria comecar com sk-ant-). Gere de novo com 'claude setup-token'."; fi
+            exit 1
+          fi
 
       - name: Claude escolhe e resume as noticias (na sua assinatura do Claude)
         uses: anthropics/claude-code-action@v1
         with:
           claude_code_oauth_token: ${{ steps.tok.outputs.token }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          show_full_output: "true"
           claude_args: |
             --max-turns 12
             --allowedTools Read,Write,Edit,Glob,Grep
