@@ -1,0 +1,97 @@
+name: 4 - Aprovar ou reprovar por resposta (e-mail ou comentario)
+
+on:
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: publish
+  cancel-in-progress: false
+
+jobs:
+  reply:
+    # So vale comentario do DONO do repositorio (resposta de e-mail vira comentario) em Issue de rascunho aberta
+    if: >-
+      github.event.issue.state == 'open' &&
+      startsWith(github.event.issue.title, 'Rascunho ') &&
+      github.event.comment.user.login == github.repository_owner &&
+      github.event.comment.user.type == 'User'
+    runs-on: ubuntu-latest
+    env:
+      TITLE: ${{ github.event.issue.title }}
+      ISSUE: ${{ github.event.issue.number }}
+      COMMENT_BODY: ${{ github.event.comment.body }}
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Interpretar a resposta
+        id: r
+        run: |
+          DATE="${TITLE#Rascunho }"
+          echo "$DATE" | grep -Eq '^[0-9]{4}-[0-9]{2}-[0-9]{2}$' || { echo "Titulo invalido"; exit 1; }
+          echo "date=$DATE" >> "$GITHUB_OUTPUT"
+          python scripts/parse_reply.py
+
+      - name: Nao entendi
+        if: steps.r.outputs.decision == 'unknown'
+        run: gh issue comment "$ISSUE" --body "Nao entendi a resposta. Responda apenas OK para aprovar ou NAO para reprovar."
+
+      - name: Reprovar
+        if: steps.r.outputs.decision == 'reject'
+        run: |
+          gh label create reprovado --color B60205 --description "Rascunho reprovado" --force
+          gh issue edit "$ISSUE" --add-label reprovado
+          gh issue comment "$ISSUE" --body "Reprovado. Nada sera publicado."
+          gh issue close "$ISSUE"
+
+      - name: Aprovar (rotulo; publicacao imediata se a data ja chegou)
+        id: a
+        if: steps.r.outputs.decision == 'approve'
+        run: |
+          DATE="${{ steps.r.outputs.date }}"
+          TODAY=$(TZ=America/Sao_Paulo date +%F)
+          gh label create aprovado --color 0E8A16 --description "Aprova a publicacao no Instagram" --force
+          # Rotulo colocado pelo GITHUB_TOKEN nao dispara o publish.yml (evita publicar em duplicidade)
+          gh issue edit "$ISSUE" --add-label aprovado
+          if [[ "$DATE" > "$TODAY" ]]; then
+            gh issue comment "$ISSUE" --body "Aprovado. Publico em $DATE as 5h (horario de Brasilia)."
+            echo "now=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "now=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/setup-python@v5
+        if: steps.a.outputs.now == 'true'
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+        if: steps.a.outputs.now == 'true'
+
+      - name: Publicar agora
+        if: steps.a.outputs.now == 'true'
+        env:
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+        run: python scripts/publish_carousel.py "${{ steps.r.outputs.date }}"
+
+      - name: Registrar e fechar
+        if: steps.a.outputs.now == 'true'
+        run: |
+          git config user.name "resumoia-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add data/posted.json
+          git diff --cached --quiet || git commit -m "Registro da publicacao ${{ steps.r.outputs.date }}"
+          git pull -q --rebase origin main
+          git push
+          gh issue comment "$ISSUE" --body "Publicado no Instagram."
+          gh issue close "$ISSUE"
+
+      - name: Avisar falha
+        if: failure()
+        run: gh issue comment "$ISSUE" --body "Algo falhou ao processar a resposta. Veja o log em Actions."

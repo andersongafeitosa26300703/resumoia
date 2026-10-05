@@ -2,8 +2,8 @@ name: Diario - noticias, rascunho e pedido de aprovacao
 
 on:
   schedule:
-    # 08:00 UTC = 05:00 em Brasilia
-    - cron: "0 8 * * *"
+    # 23:00 UTC = 20:00 em Brasilia: gera o rascunho do dia SEGUINTE e pede aprovacao por e-mail
+    - cron: "0 23 * * *"
   workflow_dispatch:
 
 permissions:
@@ -27,9 +27,9 @@ jobs:
           cache: pip
       - run: pip install -r requirements.txt
 
-      - name: Data de hoje (Brasilia)
+      - name: Data da publicacao (amanha, Brasilia)
         id: d
-        run: echo "today=$(TZ=America/Sao_Paulo date +%F)" >> "$GITHUB_OUTPUT"
+        run: echo "today=$(TZ=America/Sao_Paulo date -d tomorrow +%F)" >> "$GITHUB_OUTPUT"
 
       - name: Coletar noticias dos feeds
         run: python scripts/fetch_news.py
@@ -65,7 +65,8 @@ jobs:
             data/candidates.json, escolher e resumir as noticias do dia e gravar data/today.json. Nao execute git:
             o workflow cuida do commit. Nao altere nenhum outro arquivo.
 
-            Data de hoje (Brasilia): ${{ steps.d.outputs.today }}
+            Data de publicacao (amanha, Brasilia): ${{ steps.d.outputs.today }}
+            O post sai amanha de manha. Na intro e na manchete nao use dia da semana nem "hoje"; use "do dia" ou "de agora".
 
             PASSOS
             1. Leia data/candidates.json (lista de noticias das ultimas ~30 horas, com title, summary, source, link, published).
@@ -107,7 +108,7 @@ jobs:
           DATE=$(python -c "import json;print(json.load(open('data/today.json',encoding='utf-8'))['date'])")
           TITLE="Rascunho $DATE"
           gh label create aprovado --color 0E8A16 --description "Aprova a publicacao no Instagram" --force
-          if gh issue list --state all --search "\"$TITLE\" in:title" --json title --jq '.[].title' | grep -qx "$TITLE"; then
+          if gh issue list --state all --search "\"$TITLE\" in:title -label:reprovado" --json title --jq '.[].title' | grep -qx "$TITLE"; then
             echo "Ja existe Issue para $DATE; nada a fazer."
           else
             gh issue create --title "$TITLE" --body-file "drafts/$DATE/issue.md"

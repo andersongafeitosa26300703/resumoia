@@ -63,7 +63,8 @@ def main():
     md += [f"![slide {i}]({base}/{p.name})" for i, p in enumerate(paths, 1)]
     md += ["", "### Legenda", "```", caption, "```", "", "### Fontes"]
     md += [f"- {it['source']}: {it['link']}" for it in data["items"]]
-    md += ["", "---", "**Para aprovar e publicar:** adicione o rótulo **`aprovado`** a esta Issue (no app do GitHub: ícone de rótulos). Para descartar, feche a Issue sem rótulo."]
+    md += ["", "---", "**Para aprovar:** responda este e-mail com **OK**. **Para reprovar:** responda com **NÃO**. "
+           "(Também vale comentar direto na Issue. O post sai às 5h do dia indicado na capa.)"]
     (out / "issue.md").write_text("\n".join(md), encoding="utf-8")
     print(f"Rascunho de {data['date']} gerado em {out} ({len(paths)} imagens)")
 

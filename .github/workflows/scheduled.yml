@@ -1,0 +1,58 @@
+name: 5 - Publicar aprovados do dia (5h)
+
+on:
+  schedule:
+    # 08:00 UTC = 05:00 em Brasilia; o segundo horario e reserva caso o primeiro atrase ou falhe
+    - cron: "0 8 * * *"
+    - cron: "30 8 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+      IG_USER_ID: ${{ secrets.IG_USER_ID }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+
+      - name: Publicar rascunhos aprovados cuja data chegou
+        run: |
+          TODAY=$(TZ=America/Sao_Paulo date +%F)
+          echo "Hoje (Brasilia): $TODAY"
+          FAIL=0
+          while IFS='|' read -r NUM TITLE; do
+            [ -z "$NUM" ] && continue
+            DATE="${TITLE#Rascunho }"
+            echo "$DATE" | grep -Eq '^[0-9]{4}-[0-9]{2}-[0-9]{2}$' || { echo "Ignorando titulo invalido: $TITLE"; continue; }
+            if [[ "$DATE" > "$TODAY" ]]; then echo "#$NUM ($DATE) ainda nao chegou."; continue; fi
+            echo "Publicando #$NUM ($DATE)"
+            if python scripts/publish_carousel.py "$DATE"; then
+              git config user.name "resumoia-bot"
+              git config user.email "bot@users.noreply.github.com"
+              git add data/posted.json
+              git diff --cached --quiet || git commit -m "Registro da publicacao $DATE"
+              git pull -q --rebase origin main
+              git push
+              gh issue comment "$NUM" --body "Publicado no Instagram."
+              gh issue close "$NUM"
+            else
+              FAIL=1
+              gh issue comment "$NUM" --body "A publicacao agendada falhou. Veja o log em Actions."
+            fi
+          done < <(gh issue list --state open --label aprovado --json number,title --jq '.[] | select(.title | startswith("Rascunho ")) | "\(.number)|\(.title)"')
+          exit $FAIL
