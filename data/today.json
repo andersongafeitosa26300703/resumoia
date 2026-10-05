@@ -1,0 +1,31 @@
+{
+  "date": "2026-10-05",
+  "headline": "Trump cria Força de Super Inteligência e EUA investigam gigantes da IA",
+  "intro": "Governo americano e reguladores ganham destaque nas notícias de IA desta segunda-feira.",
+  "items": [
+    {
+      "title": "Trump cria Força de Super Inteligência e nomeia Jay Clayton como czar da IA",
+      "summary": "O presidente dos EUA lançou a Super Intelligence Force, força-tarefa que, segundo o TechCrunch, responde ao debate sobre segurança em IA. Jay Clayton, atual chefe da Inteligência Nacional, foi nomeado para liderá-la.",
+      "source": "TechCrunch / Estadão",
+      "link": "https://techcrunch.com/2026/10/04/trump-unveils-his-new-super-intelligence-force/"
+    },
+    {
+      "title": "Comissão dos EUA abre investigação inédita contra gigantes da IA",
+      "summary": "Segundo o Estadão, uma comissão americana iniciou uma investigação inédita sobre grandes empresas de inteligência artificial. O objetivo é verificar os riscos da tecnologia, em meio ao debate regulatório no país.",
+      "source": "Estadão",
+      "link": "https://news.google.com/rss/articles/CBMi8wFBVV95cUxPN2JwRzFmSXNlNjNpc1k1RC1PQTNBLUlTa2NwNXJWSzZFX0RWS1FHYVUxLVhmZnJSM3BZb004Q1J1MFRrbVpqck1Yc1FoREY4SzlibmJjc3JOaC11R3RxWTI1VmEzdE1aVDFiTDZ5NXBNNFRPd2w3RVBsaGhYVlk4dGl6eGVQaFFYbzM1MktoaFAwU0Znc1VrcnVxTmRWZXh5WkRqaG9BY0ZGQjFSREdacVBrT1JJVlFVWmxqSVU0RzdPUDQ1eVFuZHdSUUtybnJMQWd2N0F3cklFeHpJdG1YbkptZWZrZFZRWDVrOVdGWGJnZVE?oc=5"
+    },
+    {
+      "title": "Google vai limitar acesso a modelos do Gemini para usuários gratuitos e do AI Plus",
+      "summary": "De acordo com o Olhar Digital, o Google passará a restringir o acesso a modelos do Gemini para quem usa a versão gratuita e o plano AI Plus. A mudança afeta o uso diário do assistente por esses públicos.",
+      "source": "Olhar Digital",
+      "link": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxOTmlSLU8wNUNMdzFlX05jVVR6YVJQajdQcjhpT3drdEpXeTNTSXVPZjJHUmdoNDU2U2xhb1kzVV9aZERySUpUZHdub2ZNeDF1R2tDWlV6a3c1M2I0dnU3SkxXOVd2LWljZmRUZU5vbmRpbVlzWm55VjBKcV9FWnk0aWlRZkI0Skd0alpKdThhcno5TW5Zbjk4ZFRMaU9SOVpLMXAyYllIX2R6WWhuYlgxZU5uSlBwVk9Na1ZZT1dSaGRFLWNmYWdxUUtFQ21pNzdLTEZmbEd0bnRPWUE?oc=5"
+    },
+    {
+      "title": "Deepfakes lideram uso irregular de inteligência artificial nas eleições de 2026",
+      "summary": "Segundo reportagem do portal brasil.perfil.com, deepfakes são o tipo mais frequente de uso irregular de IA nas eleições brasileiras de 2026. O tema segue no centro do debate sobre regras para a tecnologia na campanha.",
+      "source": "brasil.perfil.com",
+      "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxOUFZ6NDB5d3plMXVTWV9aUlg0Rk95d0pibURobjZ6QjZRd1M3U2xvT21pb3NxWFZqYkRESzZpNHpuLVdtNlhwenAzT3R4eVhFTzBLV09jQ0lTcTl3OWs3ZnBPQXVDUm1sMWY3cVl0VzA3NWttTkhEdEhub290WVlxNnJLMmZ0TGVDblg5REpFdHpmU3Y5d1I4V00wb2VKMXhnS3lRRlpDdWh2cnBJQkpFT01zNWpwcGlDZGdYODhBcw?oc=5"
+    }
+  ]
+}
