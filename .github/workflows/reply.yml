@@ -1,4 +1,4 @@
-name: 4 - Aprovar ou reprovar por resposta (e-mail ou comentario)
+name: 4 - Aprovar, refazer ou remover por resposta (e-mail ou comentario)
 
 on:
   issue_comment:
@@ -7,6 +7,7 @@ on:
 permissions:
   contents: write
   issues: write
+  id-token: write
 
 concurrency:
   group: publish
@@ -29,6 +30,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+
       - name: Interpretar a resposta
         id: r
         run: |
@@ -39,16 +46,10 @@ jobs:
 
       - name: Nao entendi
         if: steps.r.outputs.decision == 'unknown'
-        run: gh issue comment "$ISSUE" --body "Nao entendi a resposta. Responda apenas OK para aprovar ou NAO para reprovar."
-
-      - name: Reprovar
-        if: steps.r.outputs.decision == 'reject'
         run: |
-          gh label create reprovado --color B60205 --description "Rascunho reprovado" --force
-          gh issue edit "$ISSUE" --add-label reprovado
-          gh issue comment "$ISSUE" --body "Reprovado. Nada sera publicado."
-          gh issue close "$ISSUE"
+          gh issue comment "$ISSUE" --body "Nao entendi a resposta. Responda OK (aprova), NAO (refaz tudo), refaca 3 (troca o card 3) ou remova 4 (tira o card 4)."
 
+      # ---------- APROVAR ----------
       - name: Aprovar (rotulo; publicacao imediata se a data ja chegou)
         id: a
         if: steps.r.outputs.decision == 'approve'
@@ -64,14 +65,6 @@ jobs:
           else
             echo "now=true" >> "$GITHUB_OUTPUT"
           fi
-
-      - uses: actions/setup-python@v5
-        if: steps.a.outputs.now == 'true'
-        with:
-          python-version: "3.12"
-          cache: pip
-      - run: pip install -r requirements.txt
-        if: steps.a.outputs.now == 'true'
 
       - name: Publicar agora
         if: steps.a.outputs.now == 'true'
@@ -91,6 +84,121 @@ jobs:
           git push
           gh issue comment "$ISSUE" --body "Publicado no Instagram."
           gh issue close "$ISSUE"
+
+      # ---------- REFAZER / REMOVER ----------
+      - name: Limite de revisoes por rascunho
+        id: lim
+        if: contains(fromJSON('["reject","redo","remove"]'), steps.r.outputs.decision)
+        run: |
+          N=$(gh issue view "$ISSUE" --json comments --jq '[.comments[] | select(.body | contains("Nova versao do rascunho"))] | length')
+          echo "Revisoes ja feitas: $N"
+          if [ "$N" -ge 6 ]; then
+            gh issue comment "$ISSUE" --body "Limite de 6 revisoes atingido para este rascunho. Responda OK para aprovar o atual ou feche a Issue."
+            echo "allowed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "allowed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Preparar a revisao
+        id: rv
+        if: steps.lim.outputs.allowed == 'true'
+        env:
+          DECISION: ${{ steps.r.outputs.decision }}
+          CARD: ${{ steps.r.outputs.card }}
+          DATE: ${{ steps.r.outputs.date }}
+        run: |
+          case "$DECISION" in
+            remove) python scripts/revise.py remove "$DATE" "$CARD" ;;
+            reject) python scripts/revise.py prep "$DATE" all ;;
+            redo)
+              if [ "$CARD" = "1" ]; then python scripts/revise.py prep "$DATE" capa
+              else python scripts/revise.py prep "$DATE" "card:$CARD"; fi ;;
+          esac
+
+      - name: Avisar que nao deu
+        if: steps.lim.outputs.allowed == 'true' && steps.rv.outputs.ok == 'false'
+        env:
+          MSG: ${{ steps.rv.outputs.msg }}
+        run: gh issue comment "$ISSUE" --body "$MSG"
+
+      - name: Coletar noticias de novo
+        if: steps.rv.outputs.ok == 'true' && steps.r.outputs.decision != 'remove'
+        run: python scripts/fetch_news.py
+
+      - name: Limpar o token do Claude
+        id: tok
+        if: steps.rv.outputs.ok == 'true' && steps.r.outputs.decision != 'remove'
+        env:
+          RAW_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+        run: |
+          CLEAN=$(printf '%s' "$RAW_TOKEN" | tr -d '[:space:]')
+          if [[ $CLEAN != sk-ant-* ]]; then echo "CLAUDE_CODE_OAUTH_TOKEN invalido"; exit 1; fi
+          echo "::add-mask::$CLEAN"
+          echo "token=$CLEAN" >> "$GITHUB_OUTPUT"
+
+      - name: Claude refaz o que foi pedido
+        if: steps.rv.outputs.ok == 'true' && steps.r.outputs.decision != 'remove'
+        uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ steps.tok.outputs.token }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          claude_args: |
+            --max-turns 12
+            --allowedTools Read,Write,Edit,Glob,Grep
+          prompt: |
+            Voce e o editor do perfil de Instagram ResumoIA (@resumoia), que publica carrosseis com as principais
+            noticias de inteligencia artificial, em portugues do Brasil. O dono pediu para REFAZER parte do rascunho.
+            Nao execute git. Nao altere nenhum arquivo alem do indicado.
+
+            Data do rascunho: ${{ steps.r.outputs.date }}
+            O QUE REFAZER: ${{ steps.rv.outputs.scope }}
+
+            ARQUIVOS
+            - drafts/${{ steps.r.outputs.date }}/data.json : rascunho atual, no formato
+              {"date", "headline", "intro", "items": [{"title","summary","source","link"}]}
+            - data/candidates.json : noticias recentes (title, summary, source, link, published)
+            - drafts/${{ steps.r.outputs.date }}/rejected.json : links de noticias que NAO podem voltar
+
+            TAREFA
+            1. Leia os tres arquivos.
+            2. Refaca SOMENTE o que foi pedido acima. Novas noticias devem vir de data/candidates.json, ser sobre
+               inteligencia artificial, ter link diferente de TODOS os de rejected.json e das noticias que ficam,
+               e tratar de assunto diferente das demais. Priorize relevancia real, mais de um veiculo e variedade.
+            3. Para cada noticia nova: title (portugues, neutro, no maximo 90 caracteres); summary (2 a 3 frases, no
+               maximo 280 caracteres); source (veiculo); link (o link original do candidato).
+            4. Se refizer a capa: headline (no maximo 100 caracteres) e intro (uma frase curta); sem dia da semana e
+               sem "hoje".
+            5. Grave o resultado em drafts/${{ steps.r.outputs.date }}/data.json, mesmo formato, mesma date, de 3 a 5 itens.
+
+            REGRAS: use SOMENTE fatos presentes nos candidatos; nao invente numeros, nomes, datas ou citacoes;
+            parafraseie; atribua afirmacoes controversas; tom sobrio, sem emojis; portugues correto com acentos;
+            sem aspas duplas dentro de title e summary.
+
+      - name: Gerar imagens e legenda da nova versao
+        if: steps.rv.outputs.ok == 'true'
+        env:
+          DATE: ${{ steps.r.outputs.date }}
+        run: |
+          python - <<'EOF'
+          import json, os
+          d = json.load(open(f"drafts/{os.environ['DATE']}/data.json", encoding="utf-8"))
+          assert d["date"] == os.environ["DATE"], "a data do rascunho mudou"
+          EOF
+          python scripts/make_draft.py "drafts/$DATE/data.json"
+
+      - name: Enviar a nova versao e avisar o dono
+        if: steps.rv.outputs.ok == 'true'
+        env:
+          DATE: ${{ steps.r.outputs.date }}
+          MSG: ${{ steps.rv.outputs.msg }}
+        run: |
+          git config user.name "resumoia-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add "drafts/$DATE"
+          git diff --cached --quiet || git commit -m "Nova versao do rascunho de $DATE"
+          git pull -q --rebase origin main
+          git push
+          gh issue comment "$ISSUE" --body-file "drafts/$DATE/comment.md"
 
       - name: Avisar falha
         if: failure()
