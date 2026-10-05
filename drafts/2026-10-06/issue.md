@@ -1,3 +1,5 @@
+@andersongafeitosa26300703 rascunho pronto para aprovar.
+
 ## Rascunho do carrossel de 2026-10-06
 
 ![slide 1](https://raw.githubusercontent.com/andersongafeitosa26300703/resumoia/main/drafts/2026-10-06/slide-01.jpg)
@@ -8,7 +10,7 @@
 
 ### Legenda
 ```
-Governo americano e reguladores ganham destaque nas notícias de IA do dia. (Rascunho de teste do fluxo.)
+Governo americano e reguladores ganham destaque nas notícias de IA do dia.
 
 1. Trump cria Força de Super Inteligência e nomeia Jay Clayton como czar da IA (TechCrunch / Estadão)
 2. Comissão dos EUA abre investigação inédita contra gigantes da IA (Estadão)
@@ -27,4 +29,4 @@ Salve para ler depois e siga para receber o resumo todo dia.
 - brasil.perfil.com: https://news.google.com/rss/articles/CBMivwFBVV95cUxOUFZ6NDB5d3plMXVTWV9aUlg0Rk95d0pibURobjZ6QjZRd1M3U2xvT21pb3NxWFZqYkRESzZpNHpuLVdtNlhwenAzT3R4eVhFTzBLV09jQ0lTcTl3OWs3ZnBPQXVDUm1sMWY3cVl0VzA3NWttTkhEdEhub290WVlxNnJLMmZ0TGVDblg5REpFdHpmU3Y5d1I4V00wb2VKMXhnS3lRRlpDdWh2cnBJQkpFT01zNWpwcGlDZGdYODhBcw?oc=5
 
 ---
-**Para aprovar e publicar:** adicione o rótulo **`aprovado`** a esta Issue (no app do GitHub: ícone de rótulos). Para descartar, feche a Issue sem rótulo.
+**Para aprovar:** responda este e-mail com **OK**. **Para reprovar:** responda com **NÃO**. (Também vale comentar direto na Issue. O post sai às 5h do dia indicado na capa.)
