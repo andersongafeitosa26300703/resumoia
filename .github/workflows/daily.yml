@@ -108,7 +108,8 @@ jobs:
           DATE=$(python -c "import json;print(json.load(open('data/today.json',encoding='utf-8'))['date'])")
           TITLE="Rascunho $DATE"
           gh label create aprovado --color 0E8A16 --description "Aprova a publicacao no Instagram" --force
-          if gh issue list --state all --search "\"$TITLE\" in:title -label:reprovado" --json title --jq '.[].title' | grep -qx "$TITLE"; then
+          export TITLE
+          if gh issue list --state all --limit 200 --json title,labels --jq '.[] | select(.title == $ENV.TITLE) | select(([.labels[].name] | index("reprovado")) | not) | .title' | grep -qx "$TITLE"; then
             echo "Ja existe Issue para $DATE; nada a fazer."
           else
             gh issue create --title "$TITLE" --body-file "drafts/$DATE/issue.md"
