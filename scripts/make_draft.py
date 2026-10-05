@@ -59,7 +59,9 @@ def main():
     repo = os.environ.get("GITHUB_REPOSITORY", "USUARIO/REPO")
     branch = os.environ.get("GITHUB_REF_NAME", "main")
     base = f"https://raw.githubusercontent.com/{repo}/{branch}/drafts/{data['date']}"
-    md = [f"## Rascunho do carrossel de {data['date']}", ""]
+    owner = os.environ.get("GITHUB_REPOSITORY_OWNER", "andersongafeitosa26300703")
+    # A mencao (@) garante o e-mail/aviso de aprovacao; Issues criadas pelo robo nao notificam o dono sozinhas
+    md = [f"@{owner} rascunho pronto para aprovar.", "", f"## Rascunho do carrossel de {data['date']}", ""]
     md += [f"![slide {i}]({base}/{p.name})" for i, p in enumerate(paths, 1)]
     md += ["", "### Legenda", "```", caption, "```", "", "### Fontes"]
     md += [f"- {it['source']}: {it['link']}" for it in data["items"]]
