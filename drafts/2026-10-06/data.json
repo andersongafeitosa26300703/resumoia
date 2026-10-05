@@ -1,0 +1,31 @@
+{
+  "date": "2026-10-06",
+  "headline": "Trump cria força-tarefa de IA e CEO da OpenAI defende aceitar riscos para avançar",
+  "intro": "Governo americano, OpenAI e gigantes de tecnologia movimentam o noticiário de IA do dia.",
+  "items": [
+    {
+      "title": "Trump anuncia força-tarefa para coordenar ações do governo em IA",
+      "summary": "O presidente Donald Trump anunciou uma força-tarefa para coordenar os esforços do governo americano em inteligência artificial. Segundo o TechCrunch, o grupo, chamado Super Intelligence Force, é a mais recente resposta do governo ao debate sobre segurança da IA.",
+      "source": "TechCrunch",
+      "link": "https://techcrunch.com/2026/10/04/trump-unveils-his-new-super-intelligence-force/"
+    },
+    {
+      "title": "CEO da OpenAI defende aceitar riscos para avançar com a IA",
+      "summary": "Segundo veículos como UOL e Estadão, o CEO da OpenAI afirmou que a sociedade deve aceitar também alguns efeitos negativos da inteligência artificial em troca dos benefícios da tecnologia. A fala entra no debate sobre regulação e segurança do setor.",
+      "source": "UOL / Estadão",
+      "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxPTUxwSUp6TVBiamJONE1paUdSbzNYUkZMU3hvZXN3d0lNX0FOVGMtRVQ0YVFZYzBDbS16bmM0eUpkblUtenE5US11T3BfWDU0RG84dk5EdXhVOWNELUx2eXcyWEFXTGdyUVltVGlHV2xBZGFiUVJsMUNjLXBtcWNfRF9XTkRhLWF3bk4zczhTbjA0SUF2cHdrdFV5Q2RuaFlNMnRiQWVySXFaR2FIOHo2bDNKNEFGSXRwNktIcDhUaUZjWGVEaHdkOVJR?oc=5"
+    },
+    {
+      "title": "OpenAI vai testar anúncios com imagens de produtos no ChatGPT",
+      "summary": "A OpenAI começará a testar nos EUA, ainda neste mês, um novo formato de anúncio com imagens de produtos e serviços patrocinados. Inicialmente, eles aparecerão quando o usuário gerar imagens no ChatGPT, segundo o The Verge. A empresa levou anúncios ao chatbot em fevereiro.",
+      "source": "The Verge",
+      "link": "https://www.theverge.com/ai-artificial-intelligence/1004655/openai-chatgpt-visual-ads"
+    },
+    {
+      "title": "Huawei e Qualcomm fecham acordo de patentes que inclui 5G e IA",
+      "summary": "As fabricantes Huawei e Qualcomm firmaram um acordo de patentes que abrange 5G, computação, redes e inteligência artificial, com atuação nos EUA. O pacto envolve duas grandes empresas do setor de tecnologia móvel.",
+      "source": "InfoMoney / Valor Econômico",
+      "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNNERnLVp4eEMxVFVtRGMxU0tkRzNnTlRUM2ZKM2pKRmNwdmFFUzB4d3NMcEJ2TWtXTUl2YTJ5eWhhbldtOGxKTjJLM1VqaUJBZzhrMHRpdFQtdlpWal9abWJ1eWd0dXdlX2pMeTZZUlBhcXFJYUtJUFppdHhna3dIQ1RBOGFZb1poV2l1SFlsbUczVjRZU1N4djlKRjloemJLN1BIWVQxby05QjVKdm95ajZ1SFlZNU3SAbwBQVVfeXFMTk9MeTJUUzlWQ05lM1p0OU0td1NrQm1HaFVDV2xoOExnTXRUUk5LVHU5aXhLbF9JYU5DSldsbzFSNUt4R0syYmtuVm9TcXpBYTdhaHhaNzkxdkJOQXlscXlOaF9tNlBYN0ZXT0d5TWNYbjNyWURMWHo0NmZvVHVOV3ZjRXJCUE5pRlV0a1h4VzF0UzNIcWFxeXZjdGs3WnZndDVxVDVPYkR0VXNpelhZZ0VVQlAzQ0lTVVgySDc?oc=5"
+    }
+  ]
+}

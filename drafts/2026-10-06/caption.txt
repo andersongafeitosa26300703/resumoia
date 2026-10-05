@@ -1,9 +1,9 @@
-Governo americano e reguladores ganham destaque nas notícias de IA do dia.
+Governo americano, OpenAI e gigantes de tecnologia movimentam o noticiário de IA do dia.
 
-1. Trump cria Força de Super Inteligência e nomeia Jay Clayton como czar da IA (TechCrunch / Estadão)
-2. Comissão dos EUA abre investigação inédita contra gigantes da IA (Estadão)
-3. Google vai limitar acesso a modelos do Gemini para usuários gratuitos e do AI Plus (Olhar Digital)
-4. Deepfakes lideram uso irregular de inteligência artificial nas eleições de 2026 (brasil.perfil.com)
+1. Trump anuncia força-tarefa para coordenar ações do governo em IA (TechCrunch)
+2. CEO da OpenAI defende aceitar riscos para avançar com a IA (UOL / Estadão)
+3. OpenAI vai testar anúncios com imagens de produtos no ChatGPT (The Verge)
+4. Huawei e Qualcomm fecham acordo de patentes que inclui 5G e IA (InfoMoney / Valor Econômico)
 
 Salve para ler depois e siga para receber o resumo todo dia.
 

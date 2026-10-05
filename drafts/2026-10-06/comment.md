@@ -1,6 +1,4 @@
-@andersongafeitosa26300703 rascunho pronto para aprovar.
-
-## Rascunho do carrossel de 2026-10-06
+@andersongafeitosa26300703 **Nova versao do rascunho de 2026-10-06.**
 
 ![slide 1](https://raw.githubusercontent.com/andersongafeitosa26300703/resumoia/main/drafts/2026-10-06/slide-01.jpg?v=1791210189)
 ![slide 2](https://raw.githubusercontent.com/andersongafeitosa26300703/resumoia/main/drafts/2026-10-06/slide-02.jpg?v=1791210189)
