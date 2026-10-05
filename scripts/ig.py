@@ -85,4 +85,14 @@ def publish_carousel(user_id, token, image_urls, caption):
         access_token=token,
     )["id"]
     wait_finished(parent, token)
-    return graph_post(f"{user_id}/media_publish", creation_id=parent, access_token=token)["id"]
+    last = None
+    for _ in range(8):  # o Instagram as vezes diz FINISHED mas ainda recusa publicar (erro 9007/2207027)
+        try:
+            return graph_post(f"{user_id}/media_publish", creation_id=parent, access_token=token)["id"]
+        except RuntimeError as e:
+            last = e
+            if "9007" in str(e) or "2207027" in str(e) or "not available" in str(e):
+                time.sleep(10)
+                continue
+            raise
+    raise last
