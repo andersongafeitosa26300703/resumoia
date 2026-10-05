@@ -106,7 +106,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           DATE=$(python -c "import json;print(json.load(open('data/today.json',encoding='utf-8'))['date'])")
-          TITLE="Rascunho $DATE"
+          TITLE="POST PARA APROVAÇÃO $DATE"
           gh label create aprovado --color 0E8A16 --description "Aprova a publicacao no Instagram" --force
           export TITLE
           if gh issue list --state all --limit 200 --json title,labels --jq '.[] | select(.title == $ENV.TITLE) | select(([.labels[].name] | index("reprovado")) | not) | .title' | grep -qx "$TITLE"; then

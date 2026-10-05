@@ -18,7 +18,7 @@ jobs:
     # So vale comentario do DONO do repositorio (resposta de e-mail vira comentario) em Issue de rascunho aberta
     if: >-
       github.event.issue.state == 'open' &&
-      startsWith(github.event.issue.title, 'Rascunho ') &&
+      (startsWith(github.event.issue.title, 'POST PARA APROVAÇÃO ') || startsWith(github.event.issue.title, 'Rascunho ')) &&
       github.event.comment.user.login == github.repository_owner &&
       github.event.comment.user.type == 'User'
     runs-on: ubuntu-latest
@@ -39,7 +39,7 @@ jobs:
       - name: Interpretar a resposta
         id: r
         run: |
-          DATE="${TITLE#Rascunho }"
+          DATE=$(printf '%s' "$TITLE" | grep -Eo '[0-9]{4}-[0-9]{2}-[0-9]{2}$' || true)
           echo "$DATE" | grep -Eq '^[0-9]{4}-[0-9]{2}-[0-9]{2}$' || { echo "Titulo invalido"; exit 1; }
           echo "date=$DATE" >> "$GITHUB_OUTPUT"
           python scripts/parse_reply.py

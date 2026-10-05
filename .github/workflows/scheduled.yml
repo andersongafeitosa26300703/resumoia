@@ -37,7 +37,7 @@ jobs:
           FAIL=0
           while IFS='|' read -r NUM TITLE; do
             [ -z "$NUM" ] && continue
-            DATE="${TITLE#Rascunho }"
+            DATE=$(printf '%s' "$TITLE" | grep -Eo '[0-9]{4}-[0-9]{2}-[0-9]{2}$' || true)
             echo "$DATE" | grep -Eq '^[0-9]{4}-[0-9]{2}-[0-9]{2}$' || { echo "Ignorando titulo invalido: $TITLE"; continue; }
             if [[ "$DATE" > "$TODAY" ]]; then echo "#$NUM ($DATE) ainda nao chegou."; continue; fi
             echo "Publicando #$NUM ($DATE)"
@@ -54,5 +54,5 @@ jobs:
               FAIL=1
               gh issue comment "$NUM" --body "A publicacao agendada falhou. Veja o log em Actions."
             fi
-          done < <(gh issue list --state open --label aprovado --json number,title --jq '.[] | select(.title | startswith("Rascunho ")) | "\(.number)|\(.title)"')
+          done < <(gh issue list --state open --label aprovado --json number,title --jq '.[] | select(.title | test("^(POST PARA APROVAÇÃO|Rascunho) ")) | "\(.number)|\(.title)"')
           exit $FAIL
