@@ -41,7 +41,7 @@ jobs:
             echo "$DATE" | grep -Eq '^[0-9]{4}-[0-9]{2}-[0-9]{2}$' || { echo "Ignorando titulo invalido: $TITLE"; continue; }
             if [[ "$DATE" > "$TODAY" ]]; then echo "#$NUM ($DATE) ainda nao chegou."; continue; fi
             echo "Publicando #$NUM ($DATE)"
-            if python scripts/publish_carousel.py "$DATE"; then
+            if python scripts/publish_carousel.py "$DATE" 2>&1 | tee /tmp/pub.log; [ "${PIPESTATUS[0]}" -eq 0 ]; then
               git config user.name "resumoia-bot"
               git config user.email "bot@users.noreply.github.com"
               git add data/posted.json
@@ -52,7 +52,7 @@ jobs:
               gh issue close "$NUM"
             else
               FAIL=1
-              gh issue comment "$NUM" --body "A publicacao agendada falhou. Veja o log em Actions."
+              gh issue comment "$NUM" --body "A publicacao agendada falhou. Erro: $(tail -n 6 /tmp/pub.log | sed -E "s/(access_token=)[^&\" ]+/***/g")"
             fi
           done < <(gh issue list --state open --label aprovado --json number,title --jq '.[] | select(.title | test("^(POST PARA APROVAÇÃO|Rascunho) ")) | "\(.number)|\(.title)"')
           exit $FAIL
