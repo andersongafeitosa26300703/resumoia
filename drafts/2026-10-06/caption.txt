@@ -1,10 +1,9 @@
-Agentes autônomos, segurança, mercado de chips e saúde marcam as notícias de IA.
+As principais notícias de inteligência artificial do dia, em quatro destaques.
 
-1. Pesquisadores rastreiam frota de agentes de IA ligada à infraestrutura da Tencent (TechCrunch)
-2. Google congela programa de recompensas por bugs de código aberto após onda de envios com IA (TechCrunch)
-3. CME prepara contratos futuros de computação de IA baseados em chips da Nvidia (ADVFN)
-4. Ferramenta de código aberto apaga 12 GB de dados do Apple Intelligence no macOS (The Verge)
-5. IA usa exames de rotina para prever risco de câncer de pâncreas (Defesa em Foco)
+1. OpenAI vai aplicar marca d'água em textos do ChatGPT na União Europeia (TechCrunch / Estadão)
+2. Reflection lança Beam, modelo de pesos abertos para rivalizar com os chineses (TechCrunch)
+3. INSS usa inteligência artificial para identificar atestados médicos falsos (portalgiro.com)
+4. Reino Unido vai monitorar continuamente dispositivos médicos baseados em IA (CNN Brasil)
 
 Salve para ler depois e siga para receber o resumo todo dia.
 

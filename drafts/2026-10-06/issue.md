@@ -2,22 +2,20 @@
 
 ## Rascunho do carrossel de 2026-10-06
 
-![slide 1](https://raw.githubusercontent.com/andersongafeitosa26300703/resumoia/main/drafts/2026-10-06/slide-01.jpg?v=1791211559)
-![slide 2](https://raw.githubusercontent.com/andersongafeitosa26300703/resumoia/main/drafts/2026-10-06/slide-02.jpg?v=1791211559)
-![slide 3](https://raw.githubusercontent.com/andersongafeitosa26300703/resumoia/main/drafts/2026-10-06/slide-03.jpg?v=1791211559)
-![slide 4](https://raw.githubusercontent.com/andersongafeitosa26300703/resumoia/main/drafts/2026-10-06/slide-04.jpg?v=1791211559)
-![slide 5](https://raw.githubusercontent.com/andersongafeitosa26300703/resumoia/main/drafts/2026-10-06/slide-05.jpg?v=1791211559)
-![slide 6](https://raw.githubusercontent.com/andersongafeitosa26300703/resumoia/main/drafts/2026-10-06/slide-06.jpg?v=1791211559)
+![slide 1](https://raw.githubusercontent.com/andersongafeitosa26300703/resumoia/main/drafts/2026-10-06/slide-01.jpg?v=1791254151)
+![slide 2](https://raw.githubusercontent.com/andersongafeitosa26300703/resumoia/main/drafts/2026-10-06/slide-02.jpg?v=1791254151)
+![slide 3](https://raw.githubusercontent.com/andersongafeitosa26300703/resumoia/main/drafts/2026-10-06/slide-03.jpg?v=1791254151)
+![slide 4](https://raw.githubusercontent.com/andersongafeitosa26300703/resumoia/main/drafts/2026-10-06/slide-04.jpg?v=1791254151)
+![slide 5](https://raw.githubusercontent.com/andersongafeitosa26300703/resumoia/main/drafts/2026-10-06/slide-05.jpg?v=1791254151)
 
 ### Legenda
 ```
-Agentes autônomos, segurança, mercado de chips e saúde marcam as notícias de IA.
+As principais notícias de inteligência artificial do dia, em quatro destaques.
 
-1. Pesquisadores rastreiam frota de agentes de IA ligada à infraestrutura da Tencent (TechCrunch)
-2. Google congela programa de recompensas por bugs de código aberto após onda de envios com IA (TechCrunch)
-3. CME prepara contratos futuros de computação de IA baseados em chips da Nvidia (ADVFN)
-4. Ferramenta de código aberto apaga 12 GB de dados do Apple Intelligence no macOS (The Verge)
-5. IA usa exames de rotina para prever risco de câncer de pâncreas (Defesa em Foco)
+1. OpenAI vai aplicar marca d'água em textos do ChatGPT na União Europeia (TechCrunch / Estadão)
+2. Reflection lança Beam, modelo de pesos abertos para rivalizar com os chineses (TechCrunch)
+3. INSS usa inteligência artificial para identificar atestados médicos falsos (portalgiro.com)
+4. Reino Unido vai monitorar continuamente dispositivos médicos baseados em IA (CNN Brasil)
 
 Salve para ler depois e siga para receber o resumo todo dia.
 
@@ -25,15 +23,14 @@ Salve para ler depois e siga para receber o resumo todo dia.
 ```
 
 ### Fontes
-- TechCrunch: https://techcrunch.com/2026/10/05/researchers-are-tracking-a-chinese-ai-agent-fleet/
-- TechCrunch: https://techcrunch.com/2026/10/04/google-froze-its-open-source-bug-bounty-program-due-to-a-significant-rise-in-ai-submissions/
-- ADVFN: https://news.google.com/rss/articles/CBMijAFBVV95cUxQeUVkTHpORGdzRDhJWTJHZXhlNEVVcjRLYldGNkQyeUlqV1R5LUxiYndmR3VzbjZzZ3pXWFZWb1dsRjJRVTh0ZzZOWGZ2VEtrRElCMDJNdFJ0ZU44RkhlUHNIR2xzUFA4THJLcHppQUx2WHJ0MGJUTHFwTDRlVFR4S05namNtX0U3aGh4dw?oc=5
-- The Verge: https://www.theverge.com/ai-artificial-intelligence/1004672/mac-delete-apple-intelligence-ai-tool
-- Defesa em Foco: https://news.google.com/rss/articles/CBMinAFBVV95cUxOMmkwM2JUVTJXSG9pa2lkemNNc256SmdLanZ5NWNKMDNvdnNDcnBlSm83b0szUlZ3eFM3aTJMU0Zyd1dQRFU5c3JpdGlzV0NGTFhVX2tSd0Y5dklyZWxBal9tS2lrSkFISnVCUl8xVXN1MkY2aDVaY2pvbXE4UUxKZzU5NkdUTi1LbnpVWk5SbUpGSXR1M0lrZkpHVXU?oc=5
+- TechCrunch / Estadão: https://techcrunch.com/2026/10/05/openai-will-start-watermarking-chatgpts-text-in-the-eu/
+- TechCrunch: https://techcrunch.com/2026/10/05/reflection-debuts-beam-a-open-weight-ai-model-to-rival-chinese-models-at-lower-compute-cost/
+- portalgiro.com: https://news.google.com/rss/articles/CBMi1wFBVV95cUxPdEd3Z0tSQVd1Z1l5MzRsdnlHeVF3R0FYWjh0X1Y4MWZVYzJFb055NlZTbmg3UWtrckdlazNvNlJlTEkyNURRemREUndZdGhxOEpVZU9zLVM2S000alNabG8wR2tSYkF6RjZYQUdmWVhtVGRMdTVMN1ZYNFFmNkVDUG1PbWZodVNxNkVkXzRTRGY1a3R5VFA0UlgtNHBxc2VJb19UU3BTT1FSSGVscWtpSHB1QmduaVVVQUVjZnVFYkVzSVNQVTBqek5vQkJ4VUpMZS1zakh3NA?oc=5
+- CNN Brasil: https://news.google.com/rss/articles/CBMimgFBVV95cUxNUTVPVjNfMS02Ul9XNkltaGZPYmh2SE1Ya1dxV3gyTW9ISkVBQmU2cG5vZG9wTlpZSDVISzJoSHVWanBNR2ZfYXk4aVVCbkVVR01tT0cxSE5pZl9rVEtYQ1BBYVhTQnZPb1cxck5SY0MyMU1aN01GZXEyUkpRZEFwR2Y5Q1BZR1V5QjNOa2ZfaThwM1JxUlZWeUlR?oc=5
 
 ---
 **Responda este e-mail com:**
 - **OK** para aprovar (o post sai às 5h do dia da capa)
 - **NÃO** para refazer o carrossel inteiro com outras notícias
-- **refaça 3** para trocar só o card 3 (cards de 2 a 6; o 1 é a capa)
+- **refaça 3** para trocar só o card 3 (cards de 2 a 5; o 1 é a capa)
 - **remova 4** para tirar o card 4 (mínimo de 3 notícias)
