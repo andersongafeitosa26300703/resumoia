@@ -1,0 +1,31 @@
+{
+  "date": "2026-10-09",
+  "headline": "Pesquisadores demitidos da OpenAI contestam acusações; TSE cria núcleo contra conteúdo manipulado por IA",
+  "intro": "As principais notícias de inteligência artificial do dia, em poucos slides.",
+  "items": [
+    {
+      "title": "Pesquisadores demitidos da OpenAI contestam acusações e alertam para efeito inibidor",
+      "summary": "Três pesquisadores de segurança demitidos negam, em carta aberta, a acusação de mau uso de informações sensíveis, segundo o TechCrunch. Dizem que as demissões inibem a cultura de segurança em IA da empresa.",
+      "source": "TechCrunch / Época Negócios",
+      "link": "https://techcrunch.com/2026/10/08/fired-openai-safety-researchers-dispute-misconduct-claims-warn-of-chilling-effect/"
+    },
+    {
+      "title": "TSE cria núcleo de perícia digital contra conteúdos manipulados por IA",
+      "summary": "O Tribunal Superior Eleitoral criou um núcleo de perícia digital para combater conteúdos manipulados por inteligência artificial. A medida busca reforçar a checagem de material alterado no ambiente eleitoral.",
+      "source": "Revista Soberana",
+      "link": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxObFJfNGxuUC14bUlBb285WEZJZ0p2UHF1QUl0WmpiSjZZam9OdlFfSG81XzlKVzZpdkRPT2Z1WnlEWURsRk5KMWNqZWZzSVJianl3Z2thRFpkVTdKOUR3M201M0tUSURRUEtKTDlpWXp3c1lic25XVUE3dVh6djNyRC1PbzE5aThMUnlZZ3ZSZGV3YlEzWUxlLURYNmZyc24xNmdLVjZ4SUFZSDZqNUhHMnBEdzE2R1BqWEZsYThUWEpfSlB6bW96eldaTzJxWU1LLWpKSVlZT0U?oc=5"
+    },
+    {
+      "title": "Senado lança guia prático para uso ético da inteligência artificial",
+      "summary": "A Auditoria do Senado Federal lançou um guia sobre o uso ético da IA. O material, divulgado por mais de um veículo, orienta o uso responsável da tecnologia.",
+      "source": "Senado Notícias / Jornal de Brasília",
+      "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxNX182XzZGcTRMaHljMEcxQ2stZWZQbWEyeFh5dXJjM3FtOUdNUDY3aTlydHlsWHJQLUxUcktlalZhUGh6Z3dEdEJraXBvb3pORXlpMTYtWkNUWmEyMWx5MkFQV0ZLV3I1RzdPNnRBRk5EREhwTy02Zy16ejBVWlV0b25OMzVkVTJBSVRWOVFGMWxoN0VUeUQ1NkUwTlNLM29YV2ZSTDBjZFItWjRaZFJXZmdVdk1XS3FMcVE?oc=5"
+    },
+    {
+      "title": "Google libera detector SynthID de conteúdo de IA para qualquer usuário",
+      "summary": "O Google abriu a qualquer pessoa o uso do SynthID, ferramenta que identifica conteúdo gerado por inteligência artificial. A liberação amplia o acesso à verificação de material sintético.",
+      "source": "AJN1",
+      "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQbXRpaDdmenNvUXZIVzhxTTA5Wjk3V1JBRENwSHpoSF9GWTg1NnNVUnp4OVdhcjZ1U0JLRU40UUxwRDJpOHFXM21COHBCZFgweDVtamlfZmg1ZW5xSm8zSEQ2N2ppbUdRNUlITkROT2VTcUVmbjVSdll5NmR3WldLUEQ5OVFzSDV2d0dOZjd6d2dMNlJodWdDanpIRnk1QmxpMHc?oc=5"
+    }
+  ]
+}
