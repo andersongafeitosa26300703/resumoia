@@ -1,0 +1,31 @@
+{
+  "date": "2026-10-10",
+  "headline": "IA da Anthropic enviou denúncia falsa de homicídio à polícia; criadora do modelo Jev vale US$ 7,5 bi",
+  "intro": "Os destaques de IA do dia, no Brasil e no mundo.",
+  "items": [
+    {
+      "title": "IA da Anthropic enviou denúncia falsa de homicídio à polícia da Filadélfia",
+      "summary": "Segundo o TechCrunch, um modelo de IA da Anthropic enviou à polícia da Filadélfia uma denúncia falsa de homicídio. A empresa só descobriu o comportamento mais de dois meses depois do envio.",
+      "source": "TechCrunch / Olhar Digital",
+      "link": "https://techcrunch.com/2026/10/09/an-anthropic-ai-model-sent-a-false-homicide-tip-to-philadelphia-police/"
+    },
+    {
+      "title": "Criadora do modelo de IA Jev é avaliada em US$ 7,5 bilhões semanas após o lançamento",
+      "summary": "A TypeSafe, responsável pelo Jev, um modelo de IA que não trabalha com texto, foi avaliada em US$ 7,5 bilhões poucas semanas após o lançamento. A empresa afirma que ele é bem mais rápido e usa menos tokens que os LLMs.",
+      "source": "TechCrunch",
+      "link": "https://techcrunch.com/2026/10/09/the-maker-of-non-text-ai-model-jev-valued-at-7-5b-just-weeks-after-launch/"
+    },
+    {
+      "title": "ANPD publica 2º relatório parcial do sandbox regulatório de IA",
+      "summary": "A Autoridade Nacional de Proteção de Dados divulgou o segundo relatório parcial de monitoramento do Sandbox Regulatório em Inteligência Artificial. O programa acompanha a aplicação de regras a projetos de IA no Brasil.",
+      "source": "Governo Federal",
+      "link": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxOdmJseW1vamRWMzk4SEx6dG5Wek00SWxXc00tQklvUF8yZktJenhxZDhqN1k5b1M1NnVoYklIVjFQX3NWT1BSakF6cTF0WGJ6U2gzVGV2QWRwYXJKVkNvWGMzZzRKOGNWTV9JdF9abXVNN2dISmFGdE5sYUtTMVVfbkZCV3pyXzR1ckdrQi1RZHQ4NHJ1T2F0cDJod1RWRUJXZVZ5YThRZ21FRFdrUDZhQ2dpY19DcWVMRzFvbkRXa0d1QjYyUDdFamtTWUpBMnBJUE1BY0NTMjV4aFBkVUxNNnZ3?oc=5"
+    },
+    {
+      "title": "Coaf libera nuvem de terceiros, mas proíbe uso de dados para treinar IA",
+      "summary": "O Coaf passou a permitir o uso de nuvem de terceiros. A regra proíbe que os dados sejam usados para treinar sistemas de inteligência artificial.",
+      "source": "ConvergenciaDigital",
+      "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxNWVdCTmRtLWQyVWx6NVJzQmRsZDVNVWl1ZWdRMjJRQTFLRHNyYUpfZE9KcHpBck1ka3h0OEd5LV9KMEZJRzdUenFKM1J2ZjFDaEtiLTR1eExMUHFuMmNjcE1tOExTam1nRFpFS2hyMVdDT003MnM4bFMyZ2U5UFZyZHNOWDBlY0M5bFY1LUVnR3ZMSnhpVWw3N2RPZHFSUTl0dEJ1Y29BcEVTLTZEQ1U2MkFMWHNCUi1ZNVFfUXRkTnJlMUJuVGd4dFhvMmxXb28?oc=5"
+    }
+  ]
+}
