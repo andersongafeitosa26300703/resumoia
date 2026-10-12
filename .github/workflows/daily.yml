@@ -1,9 +1,7 @@
 name: Diario - noticias, rascunho e pedido de aprovacao
 
 on:
-  schedule:
-    # 23:00 UTC = 20:00 em Brasilia: gera o rascunho do dia SEGUINTE e pede aprovacao por e-mail
-    - cron: "0 23 * * *"
+  # a geracao diaria (22h) e a publicacao (5h) agora rodam na VPS (/opt/resumoia); aqui so manual
   workflow_dispatch:
 
 permissions:
